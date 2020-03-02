@@ -5,4 +5,5 @@ if (!$connectdatabase){
     die("connection to database failed");
 }
 ?>
+<!DOCTYPE html>
 
