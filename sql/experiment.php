@@ -16,7 +16,7 @@ if (isset($_POST['submit']) || isset($_POST['update'])) {
     $insertusers .=" VALUES ('$username','$password')";
     //update query
    $updateinfo = "UPDATE info SET username = '$username', passord = '$password' where id = $id ";
-    / select query
+    // select query
     $selectfrominfo = "SELECT * FROM info";
     $selectfrominfoq = mysqli_query($connect,$selectfrominfo);
 if (!$selectfrominfoq){
