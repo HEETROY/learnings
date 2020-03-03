@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         if ($resultusers){
             echo "posted data to $databasename";
     }else{
-            echo "error here";
+            echo "error posting database to $databasename";
         }
     }
 }
@@ -38,15 +38,24 @@ if (isset($_POST['submit'])) {
 <div class="container">
     <div class="col-sm-6">
 <form action="experiment.php" method="post">
-    <label>USERNAME</label>
-    <input type="text" name="username" placeholder="username">
-    <label>PASSWORD</label>
-    <input type="password" name="password" >
-    <label>email</label>
-    <input type="email" name="email">
-    <label>NAME OF DATABASE</label>
-    <input type="text" name="databasename" >
-    <input type="submit" name="submit" value="Submit">
+
+    <div class="form-group">
+        <label>USERNAME</label>
+        <input type="text" name="username" placeholder="username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" name="password" class="form-control" >
+    </div>
+   <div class="form-group">
+       <label>email</label>
+       <input type="email" name="email" class="form-control">
+   </div>
+   <div class="form-group">
+       <label>NAME OF DATABASE</label>
+       <input type="text" name="databasename" class="form-control" >
+   </div>
+    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
 </form>
     </div>
 </div>
