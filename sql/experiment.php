@@ -1,15 +1,27 @@
 <?php
 include 'db.php';
-if (isset($_POST['submit'])) {
+
+if (isset($_POST['submit']) || isset($_POST['update'])) {
     $databasename = $_POST['databasename'];
     connecttodatabase($databasename);
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
+    $username = mysqli_escape_string($connect,$username);
+    $password = mysqli_escape_string($connect,$password);
+    // insert query
     $insertinfo = "INSERT INTO info(username,password,email)";
     $insertinfo .=" VALUES ('$username','$password','$email')";
     $insertusers = "INSERT INTO users(username,password)";
     $insertusers .=" VALUES ('$username','$password')";
+    //update query
+   $updateinfo = "UPDATE info SET username = '$username', passord = '$password' where id = $id ";
+    / select query
+    $selectfrominfo = "SELECT * FROM info";
+    $selectfrominfoq = mysqli_query($connect,$selectfrominfo);
+if (!$selectfrominfoq){
+    die("selection failed" . mysqli_error($connect));
+}
     if ($databasename == "data"){
         $resultinfo = mysqli_query($connect,$insertinfo);
         if ($resultinfo){
@@ -23,6 +35,7 @@ if (isset($_POST['submit'])) {
             echo "error posting database to $databasename";
         }
     }
+
 }
 ?>
 <!DOCTYPE html>
@@ -55,7 +68,18 @@ if (isset($_POST['submit'])) {
        <label>NAME OF DATABASE</label>
        <input type="text" name="databasename" class="form-control" >
    </div>
+    <div class="form-group">
+        <select name="id" id="">
+            <?php
+while ($row = mysqli_fetch_assoc($selectfrominfoq)){
+   $id = $row ['id'];
+    echo " <option value='$id'>$id</option>";
+}
+            ?>
+        </select>
+    </div>
     <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+    <input type="submit" class="btn btn-primary" name="update" value="Update">
 </form>
     </div>
 </div>
