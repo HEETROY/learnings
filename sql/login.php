@@ -1,4 +1,6 @@
 <?php
+//include 'functions.php';
+
 if (isset($_POST['submit']))
 {
     $username = $_POST['Username'];
@@ -14,7 +16,9 @@ if (isset($_POST['submit']))
         //echo "Please Enter username and password";
         die("Please enter username and password");
     }*/
-    $data = mysqli_connect('localhost','root','','data');
+
+    $files = 'data';
+    $data = mysqli_connect('localhost','root','',$files);
 if (!$data){
     die("Connection to Database Failed");
 }
@@ -31,11 +35,12 @@ if (!$result){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>   </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
     <body>
 <div class="container">
     <div class="col-sm-6">
@@ -52,6 +57,10 @@ if (!$result){
                 <label for="Email-Id">Email-Id</label>
                 <input type="email" name="email" class="form-control">
             </div>
+            <div class="form-group">
+                <label for="database">databasename</label>
+                <input type="text" name="databasename" class="form-control">
+            </div>
             <input class="btn btn-primary" type="submit" name="submit" value="Submit">
             <a class="btn btn-primary" href="http://localhost/Learnings/read.php">Read data</a>
         </form>
@@ -63,5 +72,4 @@ if (!$result){
 
 
 </body>
-</head>
 </html>
