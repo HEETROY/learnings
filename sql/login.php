@@ -17,7 +17,10 @@ if (isset($_POST['submit']))
         die("Please enter username and password");
     }*/
 
-    $files = 'data';
+    $files = $_POST['databasename'];
+    if (!$files){
+        die("please enter the name of the database to submit the info");
+    }
     $data = mysqli_connect('localhost','root','',$files);
 if (!$data){
     die("Connection to Database Failed");
