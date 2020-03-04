@@ -1,11 +1,12 @@
 <?php
-//include 'functions.php';
+include 'functions.php';
 
 if (isset($_POST['submit']))
 {
     $username = $_POST['Username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
+  condatabasenewdataiiii($_POST['databasename']);
     if (!$username || !$password || !$email){
         die("please enter username, password & email id to continue");
     }
@@ -21,13 +22,14 @@ if (isset($_POST['submit']))
     if (!$files){
         die("please enter the name of the database to submit the info");
     }
-    $data = mysqli_connect('localhost','root','',$files);
-if (!$data){
-    die("Connection to Database Failed");
-}
+   // $data = mysqli_connect('localhost','root','',$files);
+//if (!$data){
+ //   die("Connection to Database Failed");
+//}
 $insert = "INSERT INTO /*this is the*/info/*name of the table we want to insert into*/ (username,password,email)";//putting sql queries into a variable
 $insert .= "VALUES ('$username','$password','$email')";//concatenating the same query to mak it look clean
-$result = mysqli_query($data,$insert);
+
+    $result = mysqli_query($connectionnew,$insert);
 //$result = mysqli_query($loginfo,$insert);// my sql inbuilt function to use queries in php
 if (!$result){
     die('insertion failed'. mysqli_error());
