@@ -1,11 +1,20 @@
 <?php
-function connectionincludes($databasename)
+include "main.php";
+
+class  Connectionincludes
 {
-    $connectincludes = mysqli_connect("localhost",'root','',$databasename);
-    if ($connectincludes)
+
+    function connectionincludes($databasename)
     {
-        echo "connected to $databasename" . "<br>";
+        $connectincludes = mysqli_connect("localhost",'root','',$databasename);
+        if ($connectincludes)
+        {
+            echo "connected to $databasename" . "<br>";
+        }
     }
 }
+$data = $_POST['databasename'];
+$connect = new Connectionincludes($data);
+$connect->connectionincludes($data);
 
 ?>
