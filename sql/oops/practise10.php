@@ -39,7 +39,7 @@ class Insertquery extends Databaseconnection {
       if ($this->connection($_POST['databasename'])){
            $inserttodata = "INSERT INTO info (username,password,email) VALUES($username,$password,$email)";
           $w = mysqli_query($this->connection($_POST['databasename']), $inserttodata);
-          echo $w;
+          echo 'dss'.$w;
       }
     }
 }
@@ -104,6 +104,7 @@ $connecttologinfo->connection('loginfo');
     </div>
 
 </div>
+
 
 
 
