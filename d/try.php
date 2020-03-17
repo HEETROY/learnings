@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['submit'])){
+/*if (isset($_POST['submit'])){
 
     class Dataconnect {
 public  $result;
@@ -22,6 +22,24 @@ public  $result;
         }
     }
     $dataconnect = new Dataconnect();
+
+}*/
+if (isset($_POST['submit'])){
+
+    class Dataconnectass{
+        var $connectas;
+
+        function connectassss(){
+           $this->connectas = mysqli_connect('localhost','root','','data');
+           return $this->connectas;
+        }
+        function connecttest(){
+            if ($this->connectas){
+                echo "i failed";
+            }
+        }
+    }
+    $dataconnectass = new Dataconnectass();
 
 }
 
